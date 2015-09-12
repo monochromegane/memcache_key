@@ -11,7 +11,7 @@ module MemcacheKey
     def each
       return to_enum(:each) unless block_given?
 
-      client = Client.new(host: @host, port: @port, timeout: @timeout)
+      client = memcached_client
       keys = []
       begin
         client.stats(:items).scan(/STAT items:(\d+):number (\d+)/).each do |slab|
@@ -26,5 +26,11 @@ module MemcacheKey
       end
       keys
     end
+  end
+
+  private
+
+  def memcached_client
+    Client.new(host: @host, port: @port, timeout: @timeout)
   end
 end
