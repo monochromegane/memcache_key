@@ -1,4 +1,4 @@
-# MemcacheKey
+# MemcacheKey [![Build Status](https://travis-ci.org/monochromegane/memcache_key.svg?branch=master)](https://travis-ci.org/monochromegane/memcache_key)
 
 A memcached key searcher.
 
