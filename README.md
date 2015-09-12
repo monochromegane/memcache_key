@@ -1,8 +1,25 @@
 # MemcacheKey
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/memcache_key`. To experiment with that code, run `bin/console` for an interactive prompt.
+A memcached key searcher.
 
-TODO: Delete this and the text above, and describe your gem
+## Usage
+
+```ruby
+keys = MemcacheKey::Items.new(host: MEMCACHED_HOST)
+
+# List memcached keys
+keys.each do |key|
+  # key have reader accessors. key, bytes, expires_time.
+  p key.key
+end
+
+# Select keys by name
+keys.select do |key|
+  key.key.start_with?("my_app_namespace")
+end
+```
+
+MemcacheKey::Items.new returns `Enumerable` instance. So, you can use all Enumerable methods (e.g. `each`, `select`, `map`...).
 
 ## Installation
 
@@ -20,10 +37,6 @@ Or install it yourself as:
 
     $ gem install memcache_key
 
-## Usage
-
-TODO: Write usage instructions here
-
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -32,7 +45,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/memcache_key.
+Bug reports and pull requests are welcome on GitHub at https://github.com/monochromegane/memcache_key.
 
 
 ## License
