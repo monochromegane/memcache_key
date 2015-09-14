@@ -26,11 +26,11 @@ module MemcacheKey
       end
       keys
     end
-  end
 
-  private
+    private
 
-  def memcached_client
-    Client.new(host: @host, port: @port, timeout: @timeout)
+    def memcached_client
+      Client.new(host: @host, port: @port, timeout: @timeout)
+    end
   end
 end
